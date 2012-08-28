@@ -1,0 +1,3 @@
+{{ for name, person of @people }}
+	{{ name }}: {{ if person.age > 18 }}Adult{{ else if person.age > 4 }}Child{{ else }}Baby{{ end }}
+{{ end }}

@@ -1,0 +1,12 @@
+{{
+	x = 40
+	y = 2
+}}
+{{ x + y }}
+{{ while y++ < x }}{{ y }} {{ end }}
+{{ try }}
+	{{ throw new Error }} 
+{{ catch e }}
+	{{{ e }}}
+{{ end }}
+
