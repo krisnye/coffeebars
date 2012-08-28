@@ -1,3 +1,4 @@
+#!/usr/bin/env coffee
 global = do -> this
 
 pimatch = /\{\{\{?([\w\W]*?)\}\}\}?/g

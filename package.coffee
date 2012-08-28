@@ -1,12 +1,14 @@
 name: "coffeebars"
-version: "0.1.0"
+version: "0.1.3"
 description: "Handlebars style microtemplating with coffeescript logic"
 main: "coffeebars.js"
 directories:
 	test: "test"
+bin:
+	coffeebars: 'coffeebars.js'
 scripts:
 	test: "cake test"
-repository: ""
+repository: "https://github.com/krisnye/coffeebars"
 keywords: [
 	"coffeescript"
 	"template"

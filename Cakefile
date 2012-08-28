@@ -72,6 +72,8 @@ task 'build', 'builds the coffeebars.js and package.json', ->
 	exec 'coffee -c coffeebars.coffee', ->
 		#	build coffeebars_min.js
 		source = fs.readFileSync 'coffeebars.js', 'utf8'
+		#	rewrite with shebang
+		fs.writeFileSync 'coffeebars.js', "#!/usr/bin/env node\n#{source}", 'utf8'
 		source = minify source
 		fs.writeFileSync 'coffebars_min.js', source, 'utf8'
 		#	build package.json
