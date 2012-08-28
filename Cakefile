@@ -59,7 +59,7 @@ minify = (source) ->
 	final
 
 task 'test1', 'parses a test template', ->
-	source = fs.readFileSync 'test/advanced.template', 'utf8'
+	source = fs.readFileSync 'test/mustache.template', 'utf8'
 	parsed = cb.parse source
 	console.log parsed.toString()
 

@@ -1,0 +1,3 @@
+Hello {{@name}}
+You have just won ${{@value}}!
+{{if @in_ca}}Well, ${{@value - @value * @taxRate}}, after taxes.{{end}}
