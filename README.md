@@ -26,7 +26,15 @@ Will produce the following:
 
 ## Features
 
-### Loops and conditionals
+### Context references
+
+	The context object is used as 'this' within the render function so
+	you refer to those objects using the @ symbol or with the 'this' keyword.
+	{{ @name }}
+	{{ this.name }}
+	{{ @child?.name }}
+
+### Loops
 
 	{{ for item in ['Alpha','Beta','Charlie'] }}
 		<li>{{ item }}</li>
@@ -42,6 +50,7 @@ Will produce the following:
 		Hello {{ x }}
 	{{ end }}
 
+### Conditionals
 
 	{{ if @person?.children? }}
 		Children:
@@ -59,15 +68,13 @@ Will produce the following:
 		Z
 	{{ end }}
 
+### Multiline statements
 
 	{{
-		#	you can embed multiline coffeescript statements directly in your template
+		#	any multiline statement will not be written out
 		x = 12
 		y = 10
 		z = x * y
+		if z > x
+			x += 2
 	}}
-	anything in a single line is assumed to just be an expression value to write
-	{{ x * y }}
-
-
-### 
