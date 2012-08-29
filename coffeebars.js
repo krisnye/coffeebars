@@ -9,6 +9,10 @@
 
   pimatch = /\{\{\{?([\w\W]*?)\}\}\}?/g;
 
+  exports.render = function(context, source) {
+    return exports.compile(source)(context);
+  };
+
   exports.compile = function(source) {
     return require('coffee-script')["eval"](exports.parse(source));
   };
