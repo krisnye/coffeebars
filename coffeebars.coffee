@@ -3,6 +3,7 @@ global = do -> this
 
 pimatch = /\{\{\{?([\w\W]*?)\}\}\}?/g
 
+exports.render = (context, source) -> exports.compile(source) context
 exports.compile = (source) -> require('coffee-script').eval exports.parse source
 exports.parse = (source) ->
 	#	top down parsing starting with processing instructions
