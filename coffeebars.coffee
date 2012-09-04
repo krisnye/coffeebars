@@ -7,12 +7,11 @@ templates = {}
 exports.render = render = (context, source) ->
 	template = templates[source] ?= exports.toFunction source
 	template context
-exports.toFunction = (source) -> require('coffee-script').eval exports.toCoffeeScript source
+exports.toFunction = (source) -> eval exports.toJavaScript source
 exports.toJavaScript = (source) ->
 	script = require('coffee-script').compile exports.toCoffeeScript source
-	if script[script.length-1] is ';'
-		script = script.substring 0, script.length - 1
-	script
+	#	remove trailing semicolon
+	script.replace /;\s*$/, ''
 exports.toCoffeeScript = (source) ->
 	#	top down parsing starting with processing instructions
 	array = []
@@ -78,7 +77,7 @@ exports.toCoffeeScript = (source) ->
 	#{source}
 		return
 
-	(context, write) ->
+	return (context, write) ->
 		buffer = null
 		if not write
 			buffer = []

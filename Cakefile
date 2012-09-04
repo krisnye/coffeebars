@@ -46,7 +46,7 @@ test = ->
 				'actual  ': result
 		else
 			results[template] = true
-		# console.log cb.toJavaScript source
+		console.log cb.toJavaScript source
 	results
 
 minify = (source) ->

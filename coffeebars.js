@@ -18,11 +18,13 @@
   };
 
   exports.toFunction = function(source) {
-    return require('coffee-script')["eval"](exports.toCoffeeScript(source));
+    return eval(exports.toJavaScript(source));
   };
 
   exports.toJavaScript = function(source) {
-    return require('coffee-script').compile(exports.toCoffeeScript(source));
+    var script;
+    script = require('coffee-script').compile(exports.toCoffeeScript(source));
+    return script.replace(/;\s*$/, '');
   };
 
   exports.toCoffeeScript = function(source) {
@@ -100,7 +102,7 @@
     }
     writeText(match);
     source = array.join('');
-    template = "template = (write) ->\n" + source + "\n	return\n\n(context, write) ->\n	buffer = null\n	if not write\n		buffer = []\n		write = (text) -> buffer.push text if text?\n	template.call context, write\n	buffer?.join ''";
+    template = "template = (write) ->\n" + source + "\n	return\n\nreturn (context, write) ->\n	buffer = null\n	if not write\n		buffer = []\n		write = (text) -> buffer.push text if text?\n	template.call context, write\n	buffer?.join ''";
     return template;
   };
 

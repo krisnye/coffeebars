@@ -1,6 +1,6 @@
 {
     "name": "coffeebars",
-    "version": "0.1.5",
+    "version": "0.1.7",
     "description": "Handlebars style microtemplating with coffeescript logic",
     "main": "coffeebars.js",
     "directories": {
