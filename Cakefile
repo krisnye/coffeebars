@@ -35,7 +35,7 @@ test = ->
 		source = fs.readFileSync template, 'utf8'
 		expected = fs.readFileSync template.replace(/\.template$/, '.result'), 'utf8'
 		context = cs.eval fs.readFileSync template.replace(/\.template$/, '.coffee'), 'utf8'
-		compiled = cb.compile source
+		compiled = cb.toFunction source
 		result = compiled context
 		if result != expected
 			console.log result
@@ -46,6 +46,7 @@ test = ->
 				'actual  ': result
 		else
 			results[template] = true
+		# console.log cb.toJavaScript source
 	results
 
 minify = (source) ->
