@@ -80,7 +80,9 @@
       writeText(match);
       pi = match[1];
       dent = 0;
-      if (/^\s*(else|catch)\b\s*([\w\W]+)/.test(pi)) {
+      if (/\r|\n/.test(pi)) {
+        pi = fixIndent(pi, match);
+      } else if (/^\s*(else|catch)\b\s*([\w\W]+)/.test(pi)) {
         indent--;
         dent = 1;
         pi = pi.trim();
@@ -90,11 +92,9 @@
       } else if (/^\s*end\s*$/.test(pi)) {
         indent--;
         pi = null;
-      } else if (!/\r|\n/.test(pi)) {
+      } else {
         escape = match[0].substring(0, 3) !== '{{{';
         pi = "write (" + pi + "), " + escape;
-      } else {
-        pi = fixIndent(pi, match);
       }
       if (pi != null) {
         push(pi, dent);

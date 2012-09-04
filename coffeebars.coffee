@@ -51,7 +51,9 @@ exports.toCoffeeScript = (source) ->
 
 		pi = match[1]
 		dent = 0
-		if /^\s*(else|catch)\b\s*([\w\W]+)/.test pi
+		if /\r|\n/.test pi  # multi line literal
+			pi = fixIndent pi, match
+		else if /^\s*(else|catch)\b\s*([\w\W]+)/.test pi
 			indent--
 			dent = 1
 			pi = pi.trim()
@@ -61,11 +63,9 @@ exports.toCoffeeScript = (source) ->
 		else if /^\s*end\s*$/.test pi
 			indent--
 			pi = null
-		else if not /\r|\n/.test pi  # single line literal
+		else
 			escape = match[0].substring(0,3) isnt '{{{'
 			pi = "write (#{pi}), #{escape}"
-		else
-			pi = fixIndent pi, match
 
 		push pi, dent if pi?
 
