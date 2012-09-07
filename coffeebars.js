@@ -86,7 +86,7 @@
         indent--;
         dent = 1;
         pi = pi.trim();
-      } else if (/^\s*(if|for|while|unless|try)\s*([\w\W]+)/.test(pi)) {
+      } else if (/^\s*(if|for|while|unless|try)\s*([\w\W]+)/.test(pi) && !/\b(then|end)\b/.test(pi)) {
         dent = 1;
         pi = pi.trim();
       } else if (/^\s*end\s*$/.test(pi)) {

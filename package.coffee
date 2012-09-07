@@ -1,5 +1,5 @@
 name: "coffeebars"
-version: "0.1.9"
+version: "0.2.0"
 description: "Handlebars style microtemplating with coffeescript logic"
 main: "coffeebars.js"
 directories:
