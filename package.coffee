@@ -1,5 +1,5 @@
 name: "coffeebars"
-version: "0.2.0"
+version: "0.2.1"
 description: "Handlebars style microtemplating with coffeescript logic"
 main: "coffeebars.js"
 directories:
@@ -16,3 +16,5 @@ keywords: [
 ]
 author: "Kris Nye"
 license: "BSD"
+dependencies:
+    "coffee-script": "1.4.x"
