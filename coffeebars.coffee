@@ -4,9 +4,9 @@ global = do -> this
 pimatch = /\{\{\{?([\w\W]*?)\}\}\}?/g
 
 templates = {}
-exports.render = render = (context, source) ->
+exports.render = render = (context, source, write) ->
 	template = templates[source] ?= exports.toFunction source
-	template context
+	template context, write
 exports.toFunction = (source) -> eval exports.toJavaScript source
 exports.toJavaScript = (source) ->
 	script = require('coffee-script').compile exports.toCoffeeScript source
